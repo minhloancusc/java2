@@ -60,6 +60,32 @@ public class Region {
     }
     public void insertRegion2(Region r){
         Connection conn = MyConnection.getConnection();
+        String sql = "insert into Region (RegionID,RegionDescription) values(?,?)";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, r.getRegionID());
+            pstm.setString(2, r.getRegionDescription());
+            pstm.executeUpdate();
+            System.out.println("Insert thanh cong");
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    public void updateRegion1(int regionID, String regionDescription){
+        Connection conn = MyConnection.getConnection();
+        String sql = "update Region set RegionDescription = ? where RegionID = ?";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, regionDescription);
+            pstm.setInt(2, regionID);            
+            pstm.executeUpdate();
+            System.out.println("Insert thanh cong");
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     public int getRegionID() {

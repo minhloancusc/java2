@@ -18,7 +18,11 @@ public class NewMain {
 //        }
         
         //Insert 1
-        region.insertRegion1(8, "Dong thap");
+        //region.insertRegion1(8, "Dong thap");
+//        Region r2 = new Region(9, "Bac Lieu");
+//        region.insertRegion2(r2);
+        //Update
+        region.updateRegion1(8, "An Giang");
         //View        
         List<Region> regionList = region.showAllRegion();
         for(Region r:regionList){
