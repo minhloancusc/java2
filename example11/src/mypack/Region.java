@@ -24,8 +24,7 @@ public class Region {
         this.regionID = regionID;
         this.regionDescription = regionDescription;
     }
-    
-    
+        
     public List<Region> showAllRegion(){
         List<Region> regionList = new ArrayList();
         Connection conn = MyConnection.getConnection();
@@ -37,11 +36,30 @@ public class Region {
                 Region r = new Region(rs.getInt("RegionID"),rs.getString("RegionDescription"));
                 regionList.add(r);
             }
+            conn.close();
             return regionList;
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         return regionList;
+    }
+    
+    public void insertRegion1(int regionID, String regionDescription){
+        Connection conn = MyConnection.getConnection();
+        String sql = "insert into Region (RegionID,RegionDescription) values(?,?)";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, regionID);
+            pstm.setString(2, regionDescription);
+            pstm.executeUpdate();
+            System.out.println("Insert thanh cong");
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    public void insertRegion2(Region r){
+        Connection conn = MyConnection.getConnection();
     }
 
     public int getRegionID() {
