@@ -73,7 +73,7 @@ public class Region {
         }
     }
     
-    public void updateRegion1(int regionID, String regionDescription){
+    public void updateRegion(int regionID, String regionDescription){
         Connection conn = MyConnection.getConnection();
         String sql = "update Region set RegionDescription = ? where RegionID = ?";
         try {
@@ -81,7 +81,21 @@ public class Region {
             pstm.setString(1, regionDescription);
             pstm.setInt(2, regionID);            
             pstm.executeUpdate();
-            System.out.println("Insert thanh cong");
+            System.out.println("Edit thanh cong");
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    public void deleteRegion(int regionID){
+        Connection conn = MyConnection.getConnection();
+        String sql = "delete Region where RegionID = ?";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);            
+            pstm.setInt(1, regionID);            
+            pstm.executeUpdate();
+            System.out.println("Delete thanh cong");
             conn.close();
         } catch (SQLException ex) {
             System.out.println(ex);

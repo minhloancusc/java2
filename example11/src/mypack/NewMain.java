@@ -22,7 +22,9 @@ public class NewMain {
 //        Region r2 = new Region(9, "Bac Lieu");
 //        region.insertRegion2(r2);
         //Update
-        region.updateRegion1(8, "An Giang");
+//        region.updateRegion(8, "An Giang");
+        //Delete
+        region.deleteRegion(8);
         //View        
         List<Region> regionList = region.showAllRegion();
         for(Region r:regionList){
