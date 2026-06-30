@@ -67,8 +67,9 @@ public class Region {
             Connection conn = MyConnection.getConnection();
             String sql = "insert into Region (RegionID,RegionDescription) values (" + regionID + ",'" + regionDescription + "')";
             Statement stmt = conn.createStatement();
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
             conn.close();
+            System.out.println("Insert thanh cong!");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -79,8 +80,9 @@ public class Region {
             Connection conn = MyConnection.getConnection();
             String sql = "update Region set RegionDescription = '" + regionDescription + "' where RegionID =" + regionID;
             Statement stmt = conn.createStatement();
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
             conn.close();
+            System.out.println("Update thanh cong!");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -91,8 +93,9 @@ public class Region {
             Connection conn = MyConnection.getConnection();
             String sql = "delete Region where RegionID =" + regionID;
             Statement stmt = conn.createStatement();
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
             conn.close();
+            System.out.println("Xoa thanh cong");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
